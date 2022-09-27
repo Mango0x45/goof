@@ -45,6 +45,15 @@ void mem_copy(mem_s src, mem_s dst);
 void mem_copy_dj(mem_s src, mem_s dst);
 
 /**
+ * Fill a slice of memory with a constant byte.
+ *
+ * This sets every byte in the memory slice dst with the byte specified by src.
+ * In other words, after this function is invoked dst will look like:
+ * 	{ src, src, ..., src }
+ */
+void mem_fill(unsigned char src, mem_s dst);
+
+/**
  * Compare two slices of memory for equality.
  * 
  * This function returns true if and only if the two slices contain exactly the
