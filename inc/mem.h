@@ -54,6 +54,13 @@ void mem_copy_dj(mem_s src, mem_s dst);
 void mem_fill(unsigned char src, mem_s dst);
 
 /**
+ * Zero a slice of memory.
+ *
+ * This is functionally equivalent to mem_fill(0, dst).
+ */
+void mem_zero(mem_s dst);
+
+/**
  * Compare two slices of memory for equality.
  * 
  * This function returns true if and only if the two slices contain exactly the
