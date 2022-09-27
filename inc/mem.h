@@ -77,6 +77,24 @@ bool mem_iseq(mem_s lhs, mem_s rhs);
 bool mem_isne(mem_s lhs, mem_s rhs);
 
 /**
+ * Find the address of a subslice within a slice.
+ *
+ * The function searches for the first occurance of the slice s in the memory
+ * slice space.  If the slice is found, the address of it's beginning is
+ * returned.  If no slice is found then NULL is returned.
+ */
+unsigned char *mem_findp(mem_s s, mem_s space);
+
+/**
+ * Find the offset of a subslice within a slice.
+ *
+ * This is functionally equivalent to mem_findp() except it returns the offset
+ * (index) of the found slice instead of a pointer to it.  If the slice is not
+ * found within the search space, the length of the space is returned.
+ */
+size_t mem_findo(mem_s s, mem_s space);
+
+/**
  * Find the address of a byte within a slice.
  *
  * The function searches for the first occurance of the byte b in the memory
