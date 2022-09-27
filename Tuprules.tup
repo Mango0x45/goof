@@ -8,5 +8,5 @@ CFLAGS += -fomit-frame-pointer -O3
 CFLAGS += -pipe
 CFLAGS += -I&(incdir)
 
-!cc = |> gcc $(CFLAGS) -c %f -o %o |> %B.o
-!ar = |> ar rcs %o %f |> lib%d.a
+!cc = |> ^ CC %f^ gcc $(CFLAGS) -c %f -o %o |> %B.o
+!ar = |> ^ AR %o^ ar rcs %o %f |>
