@@ -7,6 +7,7 @@
 #ifndef GOOF_MEM_H
 #define GOOF_MEM_H
 
+#include <stdbool.h>
 #include <stddef.h>
 
 /**
@@ -41,5 +42,21 @@ void mem_copy(mem_s src, mem_s dst);
  * hold, mem_copy() should be used instead.
  */
 void mem_copy_dj(mem_s src, mem_s dst);
+
+/**
+ * Compare two slices of memory for equality.
+ * 
+ * This function returns true if and only if the two slices contain exactly the same byte
+ * values, in the same order.  It is the opposite of mem_isne().
+ */
+bool mem_iseq(mem_s lhs, mem_s rhs);
+
+/**
+ * Compare two slices of memory for inequality.
+ * 
+ * This function returns false if and only if the two slices contain exactly the same byte
+ * values, in the same order.  It is the opposite of mem_iseq().
+ */
+bool mem_isne(mem_s lhs, mem_s rhs);
 
 #endif // #ifndef GOOF_MEM_H
