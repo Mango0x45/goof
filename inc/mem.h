@@ -76,4 +76,22 @@ bool mem_iseq(mem_s lhs, mem_s rhs);
  */
 bool mem_isne(mem_s lhs, mem_s rhs);
 
+/**
+ * Find the address of a byte within a slice.
+ *
+ * The function searches for the first occurance of the byte b in the memory
+ * slice space.  If the byte is found, it's address is returned.  If no byte is
+ * found then NULL is returned.
+ */
+unsigned char *mem_findp_b(unsigned char b, mem_s space);
+
+/**
+ * Find the offset of a byte within a slice.
+ *
+ * This is functionally equivalent to mem_findp_b() except it returns the offset
+ * (index) of the found byte instead of a pointer to it.  If the byte is not
+ * found within the search space, the length of the space is returned.
+ */
+size_t mem_findo_b(unsigned char b, mem_s space);
+
 #endif // #ifndef GOOF_MEM_H
