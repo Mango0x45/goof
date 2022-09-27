@@ -1,0 +1,12 @@
+.gitignore
+
+&incdir = inc
+
+CFLAGS += -Wall -Wextra -Wpedantic -Werror
+CFLAGS += -march=native -mtune=native
+CFLAGS += -fomit-frame-pointer -O3
+CFLAGS += -pipe
+CFLAGS += -I&(incdir)
+
+!cc = |> gcc $(CFLAGS) -c %f -o %o |> %B.o
+!ar = |> ar rcs %o %f |> lib%d.a
