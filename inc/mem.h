@@ -61,6 +61,20 @@ void mem_fill(unsigned char src, mem_s dst);
 void mem_zero(mem_s dst);
 
 /**
+ * Repeatedly copy a slice of memory into another.
+ * 
+ * At byte offsets that are integer multiples of the given "stride", the source
+ * memory slice will be copied into the destination.  The source slice must have
+ * a length smaller than or equal to the stride.  At the end of the destination
+ * slice, if there is not enough space to copy the entire source slice for the
+ * last stride, it will simply not be copied.
+ * 
+ * A stride of zero is equivalent to copying the source slice to the beginning
+ * of the destination slice (if there is enough space to do so).
+ */
+void mem_rep_copy(mem_s src, size_t stride, mem_s dst);
+
+/**
  * Compare two slices of memory for equality.
  * 
  * This function returns true if and only if the two slices contain exactly the
