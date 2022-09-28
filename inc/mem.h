@@ -17,7 +17,7 @@ typedef struct {
 	/**
 	 * A pointer to the memory region.
 	 */
-	unsigned char* ptr;
+	unsigned char *ptr;
 
 	/**
 	 * The number of bytes.
