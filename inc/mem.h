@@ -127,8 +127,8 @@ int mem_coll(mem_s lhs, mem_s rhs);
 /**
  * Find the address of a subslice within a slice.
  *
- * The function searches for the first occurance of the slice s in the memory
- * slice space.  If the slice is found, the address of it's beginning is
+ * The function searches for the first occurance of the slice 's' in the memory
+ * slice 'space'.  If the slice is found, the address of its beginning is
  * returned.  If no slice is found then NULL is returned.
  */
 unsigned char *mem_findp(mem_s s, mem_s space);
@@ -145,8 +145,8 @@ size_t mem_findo(mem_s s, mem_s space);
 /**
  * Find the address of a byte within a slice.
  *
- * The function searches for the first occurance of the byte b in the memory
- * slice space.  If the byte is found, it's address is returned.  If no byte is
+ * The function searches for the first occurance of the byte 'b' in the memory
+ * slice 'space'.  If the byte is found, its address is returned.  If no byte is
  * found then NULL is returned.
  */
 unsigned char *mem_findp_b(unsigned char b, mem_s space);
