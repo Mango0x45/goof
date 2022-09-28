@@ -75,20 +75,54 @@ void mem_zero(mem_s dst);
 void mem_rep_copy(mem_s src, size_t stride, mem_s dst);
 
 /**
+ * A strict ordering can be defined over memory slices.  If one slice is smaller
+ * in length than another slice, then it is conceptually strictly less than the
+ * other.  If two slices have the same length, but at the first index where they
+ * differ the first slice has a smaller byte value than the second, then it is
+ * conceptually strictly less than the second.  If two slices are identical in
+ * length and byte values, then they are conceptually equal.
+ */
+
+/**
  * Compare two slices of memory for equality.
- * 
- * This function returns true if and only if the two slices contain exactly the
- * same byte values, in the same order.  It is the opposite of mem_isne().
  */
 bool mem_iseq(mem_s lhs, mem_s rhs);
 
 /**
  * Compare two slices of memory for inequality.
- * 
- * This function returns false if and only if the two slices contain exactly the
- * same byte values, in the same order.  It is the opposite of mem_iseq().
  */
 bool mem_isne(mem_s lhs, mem_s rhs);
+
+/**
+ * Compare two slices of memory for lesser-than.
+ */
+bool mem_islt(mem_s lhs, mem_s rhs);
+
+/**
+ * Compare two slices of memory for lesser-than or equal-to.
+ */
+bool mem_isle(mem_s lhs, mem_s rhs);
+
+/**
+ * Compare two slices of memory for greater-than.
+ */
+bool mem_isgt(mem_s lhs, mem_s rhs);
+
+/**
+ * Compare two slices of memory for greater-than or equal-to.
+ */
+bool mem_isge(mem_s lhs, mem_s rhs);
+
+/**
+ * Collate two slices of memory.
+ * 
+ * An integer is returned, whose sign determines the ordering between the two
+ * slices.  If the integer is less than zero, then the left slice is less than
+ * the right slice.  If the integer is greater than zero, then the left slice is
+ * greater than the right slice.  If the integer is equal to zero, then the left
+ * slice is equal to the right slice.
+ */
+int mem_coll(mem_s lhs, mem_s rhs);
 
 /**
  * Find the address of a subslice within a slice.
