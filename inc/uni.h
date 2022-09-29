@@ -48,7 +48,9 @@ typedef union {
  * Note that this function can be used even if the two strings overlap -- it
  * will account for the overlap and ensure that data is copied correctly.
  */
-void uni_copy(uni_s src, uni_s dst);
+static inline void uni_copy(uni_s src, uni_s dst) {
+	mem_copy(src.m, dst.m);
+}
 
 /**
  * Copy data between two disjoint strings.
@@ -58,22 +60,63 @@ void uni_copy(uni_s src, uni_s dst);
  * memory at all).  It is the caller's responsibility to ensure this invarint
  * upholds -- if they cannot, uni_copy() should be used.
  */
-void uni_copy_dj(uni_s src, uni_s dst);
+static inline void uni_copy_dj(uni_s src, uni_s dst) {
+	mem_copy_dj(src.m, dst.m);
+}
+
+/**
+ * An ordering can be defined for Unicode strings based on byte values.  This is
+ * the fastest but most semantically incorrect ordering -- Unicode strings that
+ * are canonically equivalent may be arbitrarily different bytewise.  
+ */
 
 /**
  * Compare two strings for bytewise equality.
- * 
- * This function returns true if and only if the two strings contain exactly the
- * same byte values, in the same order.
  */
-bool uni_iseq_bytewise(uni_s lhs, uni_s rhs);
+static inline bool uni_iseq_bytewise(uni_s lhs, uni_s rhs) {
+	return mem_iseq(lhs.m, rhs.m);
+}
 
 /**
  * Compare two strings for bytewise inequality.
- * 
- * This function returns false if and only if the two strings contain exactly
- * the same byte values, in the same order.
  */
-bool uni_isne_bytewise(uni_s lhs, uni_s rhs);
+static inline bool uni_isne_bytewise(uni_s lhs, uni_s rhs) {
+	return mem_isne(lhs.m, rhs.m);
+}
+
+/**
+ * Compare two strings for bytewise lesser-than.
+ */
+static inline bool uni_islt_bytewise(uni_s lhs, uni_s rhs) {
+	return mem_islt(lhs.m, rhs.m);
+}
+
+/**
+ * Compare two strings for bytewise lesser-than or equal-to.
+ */
+static inline bool uni_isle_bytewise(uni_s lhs, uni_s rhs) {
+	return mem_isle(lhs.m, rhs.m);
+}
+
+/**
+ * Compare two strings for bytewise greater-than.
+ */
+static inline bool uni_isgt_bytewise(uni_s lhs, uni_s rhs) {
+	return mem_isgt(lhs.m, rhs.m);
+}
+
+/**
+ * Compare two strings for bytewise greater-than or equal-to.
+ */
+static inline bool uni_isge_bytewise(uni_s lhs, uni_s rhs) {
+	return mem_isge(lhs.m, rhs.m);
+}
+
+/**
+ * Collate two strings bytewise.
+ */
+static inline int uni_coll_bytewise(uni_s lhs, uni_s rhs) {
+	return mem_coll(lhs.m, rhs.m);
+}
 
 #endif // #ifndef GOOF_UNI_H
