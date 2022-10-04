@@ -28,7 +28,7 @@ typedef union {
 		/**
 		 * A pointer to the UTF-8 data.
 		 */
-		unsigned char *ptr;
+		byte *ptr;
 
 		/**
 		 * The number of bytes in the data.

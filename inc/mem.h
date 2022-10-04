@@ -7,6 +7,8 @@
 #ifndef GOOF_MEM_H
 #define GOOF_MEM_H
 
+#include "types.h"
+
 #include <stdbool.h>
 #include <stddef.h>
 
@@ -17,7 +19,7 @@ typedef struct {
 	/**
 	 * A pointer to the memory region.
 	 */
-	unsigned char *ptr;
+	byte *ptr;
 
 	/**
 	 * The number of bytes.
@@ -51,7 +53,7 @@ void mem_copy_dj(mem_s src, mem_s dst);
  * In other words, after this function is invoked dst will look like:
  * 	{ src, src, ..., src }
  */
-void mem_fill(unsigned char src, mem_s dst);
+void mem_fill(byte src, mem_s dst);
 
 /**
  * Zero a slice of memory.
@@ -131,7 +133,7 @@ int mem_coll(mem_s lhs, mem_s rhs);
  * slice 'space'.  If the slice is found, the address of its beginning is
  * returned.  If no slice is found then NULL is returned.
  */
-unsigned char *mem_findp(mem_s s, mem_s space);
+byte *mem_findp(mem_s s, mem_s space);
 
 /**
  * Find the offset of a subslice within a slice.
@@ -149,7 +151,7 @@ size_t mem_findo(mem_s s, mem_s space);
  * slice 'space'.  If the byte is found, its address is returned.  If no byte is
  * found then NULL is returned.
  */
-unsigned char *mem_findp_b(unsigned char b, mem_s space);
+byte *mem_findp_b(byte b, mem_s space);
 
 /**
  * Find the offset of a byte within a slice.
@@ -158,6 +160,6 @@ unsigned char *mem_findp_b(unsigned char b, mem_s space);
  * (index) of the found byte instead of a pointer to it.  If the byte is not
  * found within the search space, the length of the space is returned.
  */
-size_t mem_findo_b(unsigned char b, mem_s space);
+size_t mem_findo_b(byte b, mem_s space);
 
 #endif // #ifndef GOOF_MEM_H
