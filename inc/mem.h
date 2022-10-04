@@ -60,7 +60,9 @@ void mem_fill(byte src, mem_s dst);
  *
  * This is functionally equivalent to mem_fill(0, dst).
  */
-void mem_zero(mem_s dst);
+static inline void mem_zero(mem_s dst) {
+	mem_fill(0, dst);
+}
 
 /**
  * Repeatedly copy a slice of memory into another.
