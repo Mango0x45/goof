@@ -1,7 +1,12 @@
+#include "assert.h"
 #include "mem.h"
 
+const char *err =
+	"mem_rep_copy: src.len of length %zu is greater than non-zero stride (%zu)";
+
 void mem_rep_copy(mem_s src, size_t stride, mem_s dst) {
-	// TODO: Ensure that src.len <= stride or the stride is zero.
+	assert(src.len <= stride || stride == 0, err, src.len, stride);
+
 	if (stride == 0) {
 		if (src.len > dst.len) return;
 		mem_copy(src, (mem_s) { .ptr = dst.ptr, .len = src.len });
