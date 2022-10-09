@@ -19,6 +19,13 @@
 #if __STDC_VERSION__ < 202000L
     #define typeof(x) decltype(x)
     #define unreachable() (__assume(0))
+
+    #define __assume__(a) (__assume(a))
+    #define __maybe_unused__ (__declspec((maybe_unused)))
+    #define __deprecated__ (__declspec((deprecated)))
+    #define __fallthrough__ (__declspec((fallthrough)))
+    #define __always_inline__ (__declspec((noreturn)))
+    #define __nodiscard_ (__declspec((nodiscard)))
 #endif
 
 #endif /* include guard */

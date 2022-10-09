@@ -59,7 +59,7 @@ typedef __uintword_t __ptrdiff_t;
 #if __STDC_VERSION__ < 202000L
     typedef void* __nullptr_t;
 #else
-    typedef __typeof__(nullptr) __nullptr_t;
+    typedef nullptr_t __nullptr_t;
 #endif
 
 #define SINTMAX_T_WIDTH     64
@@ -70,6 +70,7 @@ typedef __uintword_t __ptrdiff_t;
 #define UINTWORD_T_WIDTH    __WORDSIZE
 #define SIZE_T_WIDTH        __WORDSIZE
 #define PTRDIFF_T_WIDTH     __WORDSIZE
+#define NULLPTR_T_WIDTH     (sizeof(__nullptr_t)*8)
 
 #define __INT8_MAX          (127)
 #define __INT8_MIN          (-128)

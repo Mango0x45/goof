@@ -21,11 +21,11 @@
     #define alignof(e) _Alignof(e)
     
     #define bool _Bool
-    #define true ((bool)1)
-    #define false ((bool)0)
+    #define true ((_Bool)1)
+    #define false ((_Bool)0)
 
     typedef __nullptr_t nullptr_t;
-    #define nullptr ((nullptr_t)0)
+    #define nullptr ((__nullptr_t)0)
 #endif
 
 #define complex _Complex
@@ -33,6 +33,16 @@
 
 typedef __size_t        size_t;
 typedef __ptrdiff_t     ptrdiff_t;
-typedef __nullptr_t     nullptr_t;
+
+
+/* Utility macros. They're just nice to have. */
+
+/** Expands the argument and then uses the stringification operator on it. */
+#define STRINGIFY(X) _STRINGIFY(x)
+#define _STRINGIFY(X) #X
+
+/** Expands to 10 if argument expression expands to something, 0 otherwise. */
+#define NONEMPTY(...) _NONEMPTY(__VA_OPT__(1))
+#define _NONEMPTY(...) __VA_OPT__(1) ## 0
 
 #endif /* include guard */
