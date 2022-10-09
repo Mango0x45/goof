@@ -12,12 +12,20 @@
 #include "os_defs.h"
 #include "internal_types.h"
 
+/* I'm considering including int.h in here as well. */
+
 #define NULL ((void*)0)
 
 #if __STDC_VERSION__ < 202000L /* C23 will define these as keywords */
-#define alignas(e) _Alignas(e)
-#define alignof(e) _Alignof(e)
-#define bool _Bool
+    #define alignas(e) _Alignas(e)
+    #define alignof(e) _Alignof(e)
+    
+    #define bool _Bool
+    #define true ((bool)1)
+    #define false ((bool)0)
+
+    typedef __nullptr_t nullptr_t;
+    #define nullptr ((nullptr_t)0)
 #endif
 
 #define complex _Complex

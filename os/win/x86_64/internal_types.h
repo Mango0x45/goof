@@ -22,7 +22,7 @@
 #include "arch_defs.h"
 
 #ifndef __LLP64__
-#error "Wrong internal_types.h file! Currently using win/x86_64."
+#error "Wrong internal_types.h file! This is win/x86_64."
 #endif
 
 #if __CHAR_BIT__ != 8

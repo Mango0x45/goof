@@ -23,12 +23,11 @@
  * suggestions regarding this, and other fixed-point-related stuff. For now I
  * plan to implement 16 types.
  */
-#include <fenv.h>
 
 #define __FXPENV_ROUND_TOZERO       ((int)0)
 #define __FXPENV_ROUND_UP           ((int)1)
-#define __FXPENV_ROUND_DOWN         ((int)-1)
-#define __FXPENV_ROUND_TONEAREST    ((int)2)
+#define __FXPENV_ROUND_DOWN         ((int)2)
+#define __FXPENV_ROUND_TONEAREST    ((int)3)
 
 /**
  * Set the thread-local rounding mode for fixed-point operations.

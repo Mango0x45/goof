@@ -10,7 +10,7 @@
 #define __ARCH_DEFS_H "arch/x86/arch_defs.h
 
 #if !defined __i386__ && !defined _M_IX86
-#error "Using wrong arch_defs.h file! Currently using x86."
+#error "Using wrong arch_defs.h file! This is x86."
 #endif
 
 #define __ARCH x86

@@ -9,14 +9,13 @@
 
 #include "mem.h"
 
-#include <stdbool.h>
-#include <stddef.h>
-#include <stdint.h>
+#include "common_defs.h"
+#include "int.h"
 
 /**
  * A Unicode codepoint.
  */
-typedef uint32_t uni_c;
+typedef i32 uni_c;
 
 /**
  * A Unicode string.

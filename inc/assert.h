@@ -1,8 +1,7 @@
 #ifndef __GOOF_ASSERT_H
 #define __GOOF_ASSERT_H
 
-// TODO: Remove this once Raul's branch adding booleans is merged
-#include <stdbool.h>
+#include "common_defs.h"
 
 /**
  * Assert that the predicate `p` is true.  If it is not then abort execution and

@@ -7,10 +7,8 @@
 #ifndef GOOF_MEM_H
 #define GOOF_MEM_H
 
-#include "types.h"
-
-#include <stdbool.h>
-#include <stddef.h>
+#include "common_defs.h"
+#include "int.h"
 
 /**
  * A slice of memory.

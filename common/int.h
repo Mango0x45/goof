@@ -2,6 +2,11 @@
  * ===============================================
  * common/int.h: pretty integer types definitions.
  * ===============================================
+ * 
+ * If __INT_H_STD_STYLE_INTS is defined when this file is included,
+ * STD-style integer names (e.g: int32_t) will also be defined along with the
+ * Goof ones (e.g: i32). This feature was added for comaptibility reasons and
+ * may be removed at a later date if it is no longer deemed necessary.
  */
 
 #ifndef __INT_H
@@ -29,3 +34,21 @@ typedef __uchar_t byte;
 typedef __uintword_t word;
 
 #endif /* include guard */
+
+/**
+ * This needs to be outside of the regular include guard, such that these
+ * types can be defined by a later inclusion of the header.
+ */
+#if defined __INT_H_STD_STYLE_INTS && \
+    !defined __INT_H_STD_STYLE_INTS_DONE
+    #define __INT_H_STD_STYLE_INTS_DONE
+    #define __STD_LIKE_INT_NAME(width) \
+    typedef __sint ## width ## _t int ## width ## _t; \
+    typedef __uint ## width ## _t uint ## width ## _t;
+    __STD_LIKE_INT_NAME(8)
+    __STD_LIKE_INT_NAME(16)
+    __STD_LIKE_INT_NAME(32)
+    __STD_LIKE_INT_NAME(64)
+    __STD_LIKE_INT_NAME(max)
+    __STD_LIKE_INT_NAME(ptr)
+#endif
