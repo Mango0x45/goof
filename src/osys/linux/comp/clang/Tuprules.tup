@@ -1,5 +1,1 @@
-ifeq ($(enable)::@(COMP),y::clang)
-enable := y
-else
-enable := n
-endif
+../../../../comp/clang/Tuprules.tup
