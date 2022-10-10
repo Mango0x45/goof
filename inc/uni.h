@@ -7,15 +7,13 @@
 #ifndef GOOF_UNI_H
 #define GOOF_UNI_H
 
-#include "mem.h"
-
-#include "common_defs.h"
-#include "int.h"
+#include <mem.h>
+#include <types.h>
 
 /**
  * A Unicode codepoint.
  */
-typedef i32 uni_c;
+typedef s32 uni_c;
 
 /**
  * A Unicode string.
@@ -32,7 +30,7 @@ typedef union {
 		/**
 		 * The number of bytes in the data.
 		 */
-		size_t len;
+		ulen len;
 	};
 
 	/**

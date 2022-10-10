@@ -7,8 +7,7 @@
 #ifndef GOOF_MEM_H
 #define GOOF_MEM_H
 
-#include "common_defs.h"
-#include "int.h"
+#include <types.h>
 
 /**
  * A slice of memory.
@@ -22,7 +21,7 @@ typedef struct {
 	/**
 	 * The number of bytes.
 	 */
-	size_t len;
+	ulen len;
 } mem_s;
 
 /**
@@ -74,7 +73,7 @@ static inline void mem_zero(mem_s dst) {
  * A stride of zero is equivalent to copying the source slice to the beginning
  * of the destination slice (if there is enough space to do so).
  */
-void mem_rep_copy(mem_s src, size_t stride, mem_s dst);
+void mem_rep_copy(mem_s src, ulen stride, mem_s dst);
 
 /**
  * A strict ordering can be defined over memory slices.  If one slice is smaller
@@ -142,7 +141,7 @@ byte *mem_findp(mem_s s, mem_s space);
  * (index) of the found slice instead of a pointer to it.  If the slice is not
  * found within the search space, the length of the space is returned.
  */
-size_t mem_findo(mem_s s, mem_s space);
+ulen mem_findo(mem_s s, mem_s space);
 
 /**
  * Find the address of a byte within a slice.
@@ -160,6 +159,6 @@ byte *mem_findp_b(byte b, mem_s space);
  * (index) of the found byte instead of a pointer to it.  If the byte is not
  * found within the search space, the length of the space is returned.
  */
-size_t mem_findo_b(byte b, mem_s space);
+ulen mem_findo_b(byte b, mem_s space);
 
 #endif // #ifndef GOOF_MEM_H

@@ -1,7 +1,7 @@
 #ifndef __GOOF_ASSERT_H
 #define __GOOF_ASSERT_H
 
-#include "common_defs.h"
+#include <types.h>
 
 /**
  * Assert that the predicate `p` is true.  If it is not then abort execution and
