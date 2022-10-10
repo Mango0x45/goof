@@ -1,5 +1,6 @@
 .gitignore
 
+import CFLAGS=
 CFLAGS += -Wall -Wextra -Werror -std=gnu2x
 CFLAGS += -march=native -mtune=native
 CFLAGS += -fomit-frame-pointer -O3
@@ -30,4 +31,8 @@ headers += $(srcdir)/comp/<hdrs>
 import CC=cc
 import AR=ar
 !cc = | $(headers) |> ^j CC %f^ $(CC) $(CFLAGS) -c %f -o %o |> %B.o
-!ar = | $(headers) |> ^j AR %o^ $(AR) rcs %o %f |>
+!ar = | $(headers) |> ^j AR %b^ $(AR) rcs %o %f |>
+
+ifeq (@(OSYS),linux)
+!ln = |> ^j LN %o^ ln -sf %f %o |>
+endif

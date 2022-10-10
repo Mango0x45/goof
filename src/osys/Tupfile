@@ -1,2 +1,2 @@
 include_rules
-:foreach @(OSYS)/types.h |> !tup_preserve |> %b <hdrs>
+:foreach @(OSYS)/types.h |> !ln |> %b <hdrs>
