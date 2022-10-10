@@ -2,4 +2,5 @@ include_rules
 : foreach *.c |> !cc |>
 
 l := mem
-: $(srcdir)/$(l)/*.o $(srcdir_arch)/$(l)/*.o $(srcdir_arch_comp)/$(l)/*.o |> !ar |> ../$(l).a
+: $(srcdir)/$(l)/*.o $(srcdir_arch)/$(l)/*.o $(srcdir_arch_comp)/$(l)/*.o \
+	|> !ar |> ../$(l).a

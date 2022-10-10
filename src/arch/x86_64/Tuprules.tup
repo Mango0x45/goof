@@ -1,5 +1,5 @@
 ifeq ($(enable)::@(ARCH),y::x86_64)
-enable := y
+	enable := y
 else
-enable := n
+	enable := n
 endif

@@ -1,5 +1,5 @@
 ifeq ($(enable)::@(OSYS),y::linux)
-enable := y
+	enable := y
 else
-enable := n
+	enable := n
 endif

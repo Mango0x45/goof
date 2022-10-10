@@ -1,5 +1,5 @@
 ifeq ($(enable)::@(COMP),y::clang)
-enable := y
+	enable := y
 else
-enable := n
+	enable := n
 endif
