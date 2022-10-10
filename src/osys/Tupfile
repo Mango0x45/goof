@@ -1,0 +1,1 @@
+:foreach @(OSYS)/types.h |> !tup_preserve |> %b <hdrs>

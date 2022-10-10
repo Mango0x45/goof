@@ -1,0 +1,1 @@
+:foreach @(ARCH)/types.h |> !tup_preserve |> %b <hdrs>

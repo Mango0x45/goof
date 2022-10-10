@@ -28,6 +28,4 @@ typedef   signed long int  snat;
 typedef   signed long int  slen;
 typedef   signed long int  sptr;
 
-#include_next "types.h"
-
 #endif // #ifndef GOOF_OSYS_LINUX_ARCH_X86_64_TYPES_H
