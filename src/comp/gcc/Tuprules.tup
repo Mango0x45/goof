@@ -1,0 +1,5 @@
+ifeq ($(enable)::@(COMP),y::gcc)
+enable := y
+else
+enable := n
+endif

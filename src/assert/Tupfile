@@ -1,3 +1,5 @@
 include_rules
-: foreach *.c |> !cc |>
-: *.o |> !ar |> ../%d.a
+: foreach *.c |> !cc |> %B.o
+
+l := assert
+: $(srcdir)/$(l)/*.o $(srcdir_osys_arch_comp)/$(l)/*.o |> !ar |> ../$(l).a

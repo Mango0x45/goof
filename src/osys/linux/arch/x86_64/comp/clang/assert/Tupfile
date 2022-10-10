@@ -1,0 +1,4 @@
+include_rules
+ifeq ($(enable),y)
+: foreach *.c |> !cc |>
+endif

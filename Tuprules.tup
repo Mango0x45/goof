@@ -4,16 +4,28 @@ CFLAGS += -Wall -Wextra -Werror -std=gnu2x
 CFLAGS += -march=native -mtune=native
 CFLAGS += -fomit-frame-pointer -O3
 CFLAGS += -pipe
+CFLAGS += -nostdlib -nostdinc -nostartfiles
 CFLAGS += -I$(TUP_VARIANTDIR)/src
 CFLAGS += -I$(TUP_CWD)/src
 
-headers += $(TUP_CWD)/src/osys/@(OSYS)/comp/@(COMP)/arch/<hdrs>
-headers += $(TUP_CWD)/src/osys/@(OSYS)/comp/<hdrs>
-headers += $(TUP_CWD)/src/osys/@(OSYS)/arch/<hdrs>
-headers += $(TUP_CWD)/src/osys/<hdrs>
-headers += $(TUP_CWD)/src/arch/@(ARCH)/comp/<hdrs>
-headers += $(TUP_CWD)/src/arch/<hdrs>
-headers += $(TUP_CWD)/src/comp/<hdrs>
+srcdir_osys_arch_comp := $(TUP_CWD)/src/osys/@(OSYS)/arch/@(ARCH)/comp/@(COMP)
+srcdir_osys_arch := $(TUP_CWD)/src/osys/@(OSYS)/arch/@(ARCH)
+srcdir_osys_comp := $(TUP_CWD)/src/osys/@(OSYS)/comp/@(COMP)
+srcdir_osys := $(TUP_CWD)/src/osys/@(OSYS)
+srcdir_arch_comp := $(TUP_CWD)/src/arch/@(ARCH)/comp/@(COMP)
+srcdir_arch := $(TUP_CWD)/src/arch/@(ARCH)
+srcdir_comp := $(TUP_CWD)/src/comp/@(COMP)
+srcdir := $(TUP_CWD)/src
+
+outdir := $(TUP_VARIANTDIR)
+
+headers += $(srcdir_osys_arch)/comp/<hdrs>
+headers += $(srcdir_osys)/arch/<hdrs>
+headers += $(srcdir_osys)/comp/<hdrs>
+headers += $(srcdir)/osys/<hdrs>
+headers += $(srcdir_arch)/comp/<hdrs>
+headers += $(srcdir)/arch/<hdrs>
+headers += $(srcdir)/comp/<hdrs>
 
 import CC=cc
 import AR=ar

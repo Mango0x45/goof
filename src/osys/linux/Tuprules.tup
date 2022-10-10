@@ -1,0 +1,5 @@
+ifeq ($(enable)::@(OSYS),y::linux)
+enable := y
+else
+enable := n
+endif
