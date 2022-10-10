@@ -34,5 +34,5 @@ import AR=ar
 !ar = | $(headers) |> ^j AR %b^ $(AR) rcs %o %f |>
 
 ifeq (@(OSYS),linux)
-!ln = |> ^j LN %o^ ln -sf %f %o |>
+  !ln = |> ^j LN %o^ ln -rsf %f %o |>
 endif
