@@ -11,9 +11,9 @@ headers += $(TUP_CWD)/src/osys/@(OSYS)/comp/@(COMP)/arch/<hdrs>
 headers += $(TUP_CWD)/src/osys/@(OSYS)/comp/<hdrs>
 headers += $(TUP_CWD)/src/osys/@(OSYS)/arch/<hdrs>
 headers += $(TUP_CWD)/src/osys/<hdrs>
-headers += $(TUP_CWD)/src/comp/@(COMP)/arch/<hdrs>
-headers += $(TUP_CWD)/src/comp/<hdrs>
+headers += $(TUP_CWD)/src/arch/@(ARCH)/comp/<hdrs>
 headers += $(TUP_CWD)/src/arch/<hdrs>
+headers += $(TUP_CWD)/src/comp/<hdrs>
 
 import CC=cc
 import AR=ar
