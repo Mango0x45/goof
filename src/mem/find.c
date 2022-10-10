@@ -1,10 +1,10 @@
-#define _GNU_SOURCE
 #include "mem.h"
 
-#include <string.h>
-
 byte *mem_findp(mem_s s, mem_s space) {
-	return memmem(space.ptr, space.len, s.ptr, s.len);
+	for (ulen i = 0; i <= space.len - s.len; i++)
+		if (mem_iseq(s, (mem_s) { .ptr = space.ptr + i, .len = s.len }))
+			return &space.ptr[i];
+	return NULL;
 }
 
 ulen mem_findo(mem_s s, mem_s space) {

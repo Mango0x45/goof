@@ -1,7 +1,6 @@
 #include "mem.h"
 
-#include <string.h>
-
 void mem_fill(byte src, mem_s dst) {
-	memset(dst.ptr, src, dst.len);
+	for (ulen i = 0; i < dst.len; i++)
+		dst.ptr[i] = src;
 }

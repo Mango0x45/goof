@@ -1,11 +1,16 @@
 #include "assert.h"
 #include "mem.h"
 
-#include <string.h>
-
-const char *err = "mem_cpy: src and dst have unequal lengths %zu and %zu";
+static char const err[] =
+	"mem_cpy: src and dst have unequal lengths %zu and %zu";
 
 void mem_copy(mem_s src, mem_s dst) {
 	assert(src.len == dst.len, err, src.len, dst.len);
-	memmove(dst.ptr, src.ptr, src.len);
+	if (src.ptr > dst.ptr) {
+		for (ulen i = 0; i < src.len; i++)
+			dst.ptr[i] = src.ptr[i];
+	} else if (src.ptr < dst.ptr) {
+		for (ulen i = 0; i < src.len; i++)
+			dst.ptr[src.len - i - 1] = src.ptr[src.len - i - 1];
+	}
 }

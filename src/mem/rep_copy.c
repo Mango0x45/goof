@@ -1,7 +1,7 @@
 #include "assert.h"
 #include "mem.h"
 
-const char *err =
+static char const err[] =
 	"mem_rep_copy: src.len of length %zu is greater than non-zero stride (%zu)";
 
 void mem_rep_copy(mem_s src, ulen stride, mem_s dst) {

@@ -1,9 +1,10 @@
 #include "mem.h"
 
-#include <string.h>
-
 byte *mem_findp_b(byte b, mem_s space) {
-	return memchr(space.ptr, b, space.len);
+	for (ulen i = 0; i < space.len; i++)
+		if (space.ptr[i] == b)
+			return &space.ptr[i];
+	return NULL;
 }
 
 ulen mem_findo_b(byte b, mem_s space) {
