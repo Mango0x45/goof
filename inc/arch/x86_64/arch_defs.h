@@ -7,7 +7,7 @@
  */
 
 #ifndef __ARCH_DEFS_H
-#define __ARCH_DEFS_H "arch/x86_64/arch_defs.h
+#define __ARCH_DEFS_H "arch/x86_64/arch_defs.h"
 
 #if !defined __x86_64__ && !defined _M_AMD64
 #error "Using wrong arch_defs.h file! This is x86_64."

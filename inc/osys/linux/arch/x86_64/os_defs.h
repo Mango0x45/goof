@@ -9,6 +9,7 @@
 
 #include_next "os_defs.h" /* the non architecture-specific file */
 
+#undef __OS
 #define __OS LINUX64
 
 #endif /* include guard */

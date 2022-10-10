@@ -2,11 +2,20 @@
 
 &incdir = inc
 
-CFLAGS += -Wall -Wextra -Wpedantic -Werror
+CFLAGS += -Wall -Wextra -Werror -std=gnu2x
 CFLAGS += -march=native -mtune=native
 CFLAGS += -fomit-frame-pointer -O3
 CFLAGS += -pipe
+CFLAGS += -I&(incdir)/osys/@(OSYS)/comp/@(COMP)/arch/@(ARCH)
+CFLAGS += -I&(incdir)/osys/@(OSYS)/comp/@(COMP)
+CFLAGS += -I&(incdir)/osys/@(OSYS)/arch/@(ARCH)
+CFLAGS += -I&(incdir)/osys/@(OSYS)
+CFLAGS += -I&(incdir)/comp/@(COMP)/arch/@(ARCH)
+CFLAGS += -I&(incdir)/comp/@(COMP)
+CFLAGS += -I&(incdir)/arch/@(ARCH)
 CFLAGS += -I&(incdir)
 
-!cc = |> ^j CC %f^ gcc $(CFLAGS) -c %f -o %o |> %B.o
-!ar = |> ^j AR %o^ ar rcs %o %f |>
+import CC=cc
+import AR=ar
+!cc = |> ^j CC %f^ $(CC) $(CFLAGS) -c %f -o %o |> %B.o
+!ar = |> ^j AR %o^ $(AR) rcs %o %f |>
