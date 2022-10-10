@@ -5,7 +5,7 @@ charset = utf-8
 trim_trailing_whitespace = false
 max_line_length = 80
 
-[*.{c,h}]
+[*.{c,h,tup}]
 indent_style = tab
 indent_size = 4
 
