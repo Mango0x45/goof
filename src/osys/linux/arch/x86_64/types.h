@@ -20,12 +20,12 @@ typedef unsigned long int  unat;
 typedef unsigned long int  ulen;
 typedef unsigned long int  uptr;
 
-typedef   signed char      s8;
-typedef   signed short int s16;
-typedef   signed int       s32;
-typedef   signed long int  s64;
-typedef   signed long int  snat;
-typedef   signed long int  slen;
-typedef   signed long int  sptr;
+typedef   signed char      i8;
+typedef   signed short int i16;
+typedef   signed int       i32;
+typedef   signed long int  i64;
+typedef   signed long int  inat;
+typedef   signed long int  ilen;
+typedef   signed long int  iptr;
 
 #endif // #ifndef GOOF_OSYS_LINUX_ARCH_X86_64_TYPES_H
