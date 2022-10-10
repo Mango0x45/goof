@@ -1,17 +1,14 @@
 /**
- * ===================================================
- * os/linux/x86_64/os_defs.h: OS-specific definitions.
- * ===================================================
+ * ========================================================
+ * os/linux/x86_64/os_defs.h: linux64-specific definitions.
+ * ========================================================
  */
 
-#ifndef __OS_DEFS_H
-#define __OS_DEFS_H "os/linux/x86_64/os_defs.h"
+#ifndef __OS_ARCH_DEFS_H
+#define __OS_ARCH_DEFS_H "os/linux/x86_64/os_defs.h"
 
-#ifndef __linux__
-#error "Wrong os_defs.h file! This is linux/x86_64."
-#endif
+#include_next "os_defs.h" /* the non architecture-specific file */
 
-#define __OS_TYPE LINUX
 #define __OS LINUX64
 
 #endif /* include guard */

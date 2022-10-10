@@ -2,6 +2,8 @@
  * ===============================================
  * common/common_defs.h: general goof definitions.
  * ===============================================
+ * 
+ * Includes all other *_defs.h headers.
  */
 
 #ifndef __COMMON_DEFS_H
@@ -31,17 +33,25 @@
 #define complex _Complex
 #define imaginary _Imaginary
 
+/** Unsigned integral type capable of storing the size of any type. */
 typedef __size_t        size_t;
+/** Signed integral type capable of storing the difference of two pointers. */
 typedef __ptrdiff_t     ptrdiff_t;
+/** A type with alignment requirement at least as large as any scalar type. */
+typedef __max_align_t   max_align_t;
 
 
 /* Utility macros. They're just nice to have. */
 
-/** Expands the argument and then uses the stringification operator on it. */
-#define STRINGIFY(X) _STRINGIFY(x)
-#define _STRINGIFY(X) #X
+/** Expands the argument and then stringifies it. */
+#define STRINGIFY(e) _STRINGIFY(e)
+#define _STRINGIFY(e) #e
 
-/** Expands to 10 if argument expression expands to something, 0 otherwise. */
+/**
+ * Expands to 10 if argument expression expands to something, 0 otherwise.
+ * Useful to test difference between a macro that is defined as 0 and one that
+ * is just defined, or to test a conditionaly defined macro.
+ */
 #define NONEMPTY(...) _NONEMPTY(__VA_OPT__(1))
 #define _NONEMPTY(...) __VA_OPT__(1) ## 0
 
