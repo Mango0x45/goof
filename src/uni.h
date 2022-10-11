@@ -44,8 +44,8 @@ typedef union {
  * Whether the given position in a string is a code-point boundary.
  */
 static inline bool uni_is_cpb(uni_s str, ulen pos) {
-	if (pos >= str.len) return false;
-	return str.ptr[pos] < 128;
+	if (pos >= str.len) return pos == str.len;
+	return (str.ptr[pos] >> 6) != 2; // '10XX XXXX' is a continuation byte.
 }
 
 /**
