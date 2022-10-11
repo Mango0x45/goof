@@ -7,13 +7,14 @@
 #ifndef GOOF_UNI_H
 #define GOOF_UNI_H
 
+#include <assert.h>
 #include <mem.h>
 #include <types.h>
 
 /**
  * A Unicode codepoint.
  */
-typedef s32 uni_c;
+typedef u32 uni_c;
 
 /**
  * A Unicode string.
@@ -38,6 +39,46 @@ typedef union {
 	 */
 	mem_s m;
 } uni_s;
+
+/**
+ * Whether the given position in a string is a code-point boundary.
+ */
+static inline bool uni_is_cpb(uni_s str, ulen pos) {
+	if (pos >= str.len) return false;
+	return str.ptr[pos] < 128;
+}
+
+/**
+ * Construct a string from the given literal.
+ * 
+ * TODO: Verify that the input is valid Unicode.
+ */
+#define UNI(_str) ((uni_s) { .ptr = (byte *) (_str), .len = sizeof(_str) - 1 })
+
+static inline uni_s __uni_gets(uni_s str, ulen beg, ulen end, ulen len) {
+	assert(end == 0 || len == 0, NULL);
+	if (len) {
+		assert(uni_is_cpb(str, beg) && uni_is_cpb(str, beg + len), NULL);
+		return (uni_s) { .ptr = str.ptr + beg, .len = len };
+	} else {
+		assert(uni_is_cpb(str, beg) && uni_is_cpb(str, end), NULL);
+		return (uni_s) { .ptr = str.ptr + beg, .len = end - beg };
+	}
+}
+
+/**
+ * Slice the given string.
+ * 
+ * ```
+ * uni_s str;
+ * uni_gets(str, 4, 6); // &str[4 .. 6]
+ * uni_gets(str, 4, .end = 6); // &str[4 .. 6]
+ * uni_gets(str, 4, .len = 2); // &str[4 .. 6]
+ * ```
+ */
+#define uni_gets(_str, ...) ({ \
+	struct { ulen beg, end, len; } __sel = { __VA_ARGS__ }; \
+	__uni_gets(_str, __sel.beg, __sel.end, __sel.len); })
 
 /**
  * Overwrite one string with the content of another.
