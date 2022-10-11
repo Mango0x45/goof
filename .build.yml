@@ -1,0 +1,20 @@
+arch: x86_64
+image: archlinux
+sources:
+- https://github.com/gittup/tup.git
+packages:
+- pcre
+- fuse3
+tasks:
+- gittup: |
+    ls -l /dev/fuse
+    sudo modprobe fuse
+    ls -l /dev/fuse
+    sudo chmod 666 /dev/fuse
+    cd tup
+    ./bootstrap.sh
+- build: |
+    cd goof
+    echo -e "CONFIG_ARCH=x86_64\nCONFIG_OSYS=linux\nCONFIG_COMP=gcc" > tup.config
+    ../tup/tup init
+    ../tup/tup
