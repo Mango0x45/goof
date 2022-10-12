@@ -31,8 +31,8 @@ headers += $(srcdir)/comp/<hdrs>
 import CC=cc
 import AR=ar
 !cc = | $(headers) |> ^j CC %f^ $(CC) $(CFLAGS) -c %f -o %o |> %B.o
-!ar = | $(headers) |> ^j AR %b^ $(AR) rcs %o %f |>
+!ar = | $(headers) |> ^ AR %b^ $(AR) rcs %o %f |>
 
 ifeq (@(OSYS),linux)
-  !ln = |> ^j LN %o^ ln -rsf %f %o |>
+  !ln = |> ^ LN %o^ ln -rsf %f %o |>
 endif
