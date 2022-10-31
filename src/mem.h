@@ -8,6 +8,7 @@
 #define GOOF_MEM_H
 
 #include <types.h>
+#include <cmp.h>
 
 /**
  * A slice of memory.
@@ -117,13 +118,12 @@ bool mem_isge(mem_s lhs, mem_s rhs);
 /**
  * Collate two slices of memory.
  * 
- * An integer is returned, whose sign determines the ordering between the two
- * slices.  If the integer is less than zero, then the left slice is less than
- * the right slice.  If the integer is greater than zero, then the left slice is
- * greater than the right slice.  If the integer is equal to zero, then the left
- * slice is equal to the right slice.
+ * This will compare the two slices of memory sequentially; if the two contain
+ * different sequences of bytes, then the ordering of the first pair of bytes
+ * that differ between the two slices will determine their ordering.  Note that
+ * this is a total ordering; CMP_NA is never returned.  See <cmp.h>.
  */
-int mem_coll(mem_s lhs, mem_s rhs);
+cmp mem_coll(mem_s lhs, mem_s rhs);
 
 /**
  * Find the address of a subslice within a slice.
